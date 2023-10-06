@@ -1,11 +1,11 @@
 const btnEl = document.querySelector("button");
-const amountEl = document.querySelector("#amount");
-const percentageEl = document.querySelector("#percentage");
+const amountInput = document.querySelector("#amount");
+const percentageInput = document.querySelector("#percentage");
 const resultEl = document.querySelector("#result");
 
 const calcTip = function () {
-  const amount = Number(amountEl.value);
-  const percentage = Number(percentageEl.value);
+  const amount = Number(amountInput.value);
+  const percentage = Number(percentageInput.value);
   const total = amount + (amount * percentage) / 100;
 
   return total;
@@ -14,10 +14,8 @@ const calcTip = function () {
 const showResult = function (e) {
   e.preventDefault();
 
-  const result = calcTip(e).toFixed(2);
-
-  resultEl.innerText = `$${result}`;
-  resultEl.style.display = "inline-block";
+  const result = calcTip(e);
+  resultEl.innerText = `$${result.toFixed(2)}`;
 };
 
 btnEl.addEventListener("click", showResult);
